@@ -26,13 +26,13 @@ const LoginPage = () => {
 
   // GitHub OAuth Login
   const handleGitHubLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: window.location.origin, // Redirect after login
+        redirectTo: `${window.location.origin}/`,
       },
     });
-
+  
     if (error) {
       alert(error.message);
     }
